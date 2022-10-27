@@ -34,18 +34,23 @@ class ARViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arView = ARView(frame: view.bounds)
+        arView = ARView()
+        arView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(arView)
         
         addGestureRecognizers()
         addSubviewForARView()
         setupConstraints()
-        
     }
     
     // MARK: - Setup Methods
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            arView.topAnchor.constraint(equalTo: view.topAnchor),
+            arView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            arView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            arView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
             addBoxButton.centerXAnchor.constraint(equalTo: arView.centerXAnchor),
             addBoxButton.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             
@@ -71,9 +76,8 @@ class ARViewController: UIViewController {
     
     
     // MARK: - Tap Methods
-    @objc func handleTapSwitchColorBox(_ recognizer: UITapGestureRecognizer) {
+    @objc private func handleTapSwitchColorBox(_ recognizer: UITapGestureRecognizer) {
         guard let view = self.view else { return }
-        
         let tapLocation = recognizer.location(in: view)
         
         if let entity = arView.entity(at: tapLocation) as? ModelEntity {
@@ -82,9 +86,8 @@ class ARViewController: UIViewController {
         }
     }
     
-    @objc func handleTapRemoveBox(_ recognizer: UITapGestureRecognizer) {
+    @objc private func handleTapRemoveBox(_ recognizer: UITapGestureRecognizer) {
         guard let view = self.view else { return }
-        
         let tapLocation = recognizer.location(in: view)
         
         if let entity = arView.entity(at: tapLocation) as? ModelEntity {
@@ -92,7 +95,7 @@ class ARViewController: UIViewController {
         }
     }
     
-    @objc func addBox() {
+    @objc private func addBox() {
         let anchor = AnchorEntity(plane: .horizontal)
         let material = SimpleMaterial(color: .systemRed, isMetallic: true)
         
@@ -106,7 +109,7 @@ class ARViewController: UIViewController {
         arView.scene.addAnchor(anchor)
     }
     
-    @objc func removeAllAnchors() {
+    @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
     }
     
