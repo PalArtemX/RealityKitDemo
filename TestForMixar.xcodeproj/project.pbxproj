@@ -15,6 +15,7 @@
 		F8417C79290A813200415558 /* MyARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C78290A813200415558 /* MyARView.swift */; };
 		F8417C7B290A83B600415558 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C7A290A83B600415558 /* ARViewController.swift */; };
 		F8417C81290A899C00415558 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C80290A899C00415558 /* UIColorExtension.swift */; };
+		F8417C83290AD0E100415558 /* ARViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C82290AD0E100415558 /* ARViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		F8417C78290A813200415558 /* MyARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyARView.swift; sourceTree = "<group>"; };
 		F8417C7A290A83B600415558 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F8417C80290A899C00415558 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		F8417C82290AD0E100415558 /* ARViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				F8417C80290A899C00415558 /* UIColorExtension.swift */,
+				F8417C82290AD0E100415558 /* ARViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8417C67290A7A5200415558 /* MainView.swift in Sources */,
+				F8417C83290AD0E100415558 /* ARViewExtension.swift in Sources */,
 				F8417C77290A7D7100415558 /* ARViewControllerContainer.swift in Sources */,
 				F8417C79290A813200415558 /* MyARView.swift in Sources */,
 				F8417C7B290A83B600415558 /* ARViewController.swift in Sources */,

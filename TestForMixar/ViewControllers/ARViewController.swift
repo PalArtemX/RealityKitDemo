@@ -8,6 +8,7 @@
 
 import UIKit
 import RealityKit
+import ARKit
 
 class ARViewController: UIViewController {
 
@@ -35,13 +36,18 @@ class ARViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         arView = ARView()
+        
         arView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(arView)
         
-        addGestureRecognizers()
         addSubviewForARView()
         setupConstraints()
+        
+        arView.enableLongTouchBoxDelete()
+        arView.enableColorSwitchingByTouch()
     }
+    
+  
     
     // MARK: - Setup Methods
     private func setupConstraints() {
@@ -68,45 +74,18 @@ class ARViewController: UIViewController {
     }
     
     
-    // MARK: - Add Gesture Recognizers
-    private func addGestureRecognizers() {
-        arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapSwitchColorBox)))
-        arView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleTapRemoveBox)))
-    }
-    
     
     // MARK: - Tap Methods
-    @objc private func handleTapSwitchColorBox(_ recognizer: UITapGestureRecognizer) {
-        guard let view = self.view else { return }
-        let tapLocation = recognizer.location(in: view)
-        
-        if let entity = arView.entity(at: tapLocation) as? ModelEntity {
-            let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
-            entity.model?.materials = [material]
-        }
-    }
-    
-    @objc private func handleTapRemoveBox(_ recognizer: UITapGestureRecognizer) {
-        guard let view = self.view else { return }
-        let tapLocation = recognizer.location(in: view)
-        
-        if let entity = arView.entity(at: tapLocation) as? ModelEntity {
-            entity.anchor?.removeChild(entity)
-        }
-    }
-    
     @objc private func addBox() {
-        let anchor = AnchorEntity(plane: .horizontal)
+        let box = MeshResource.generateBox(size: 0.1)
         let material = SimpleMaterial(color: .systemRed, isMetallic: true)
-        
-        let box = ModelEntity(mesh: .generateBox(size: 0.1), materials: [material])
-        box.generateCollisionShapes(recursive: true)
-        box.transform = Transform(pitch: 0, yaw: 1, roll: 0)
-        
-        arView.installGestures(.all, for: box)
-        
-        anchor.addChild(box)
-        arView.scene.addAnchor(anchor)
+        let modelEntity = ModelEntity(mesh: box, materials: [material])
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        anchorEntity.name = "BoxAnchor"
+        anchorEntity.addChild(modelEntity)
+        arView.scene.addAnchor(anchorEntity)
+        modelEntity.generateCollisionShapes(recursive: true)
+        arView.installGestures(.all, for: modelEntity)
     }
     
     @objc private func removeAllAnchors() {
