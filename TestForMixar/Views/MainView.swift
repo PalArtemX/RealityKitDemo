@@ -8,7 +8,8 @@
 import SwiftUI
 import RealityKit
 
-struct MainView : View {
+struct MainView: View {
+    
     var body: some View {
         ARViewControllerContainer()
             .edgesIgnoringSafeArea(.all)
@@ -24,10 +25,10 @@ struct MainView : View {
 
 
 
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
-#endif
+//#if DEBUG
+//struct ContentView_Previews : PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//    }
+//}
+//#endif

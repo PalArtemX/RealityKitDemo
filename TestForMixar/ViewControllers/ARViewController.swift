@@ -12,46 +12,84 @@ import RealityKit
 class ARViewController: UIViewController {
 
     private var arView: ARView!
+    
+    let addBoxButton: UIButton = {
+        let button = UIButton(configuration: .borderedTinted())
+        button.configuration?.image = UIImage(systemName: "plus.square.dashed")
+        button.configuration?.title = "Add Box"
+        button.tintColor = .green
+        button.addTarget(.none, action: #selector(addBox), for: .touchUpInside)
+        return button
+    }()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         arView = ARView(frame: view.bounds)
         view.addSubview(arView)
         
         arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapSwitchColorBox)))
+        arView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleTapRemoveBox)))
         
-        addBox()
-        
-        
+        addSubviewForARView()
+        setupConstraints()
         
     }
     
+    // MARK: - Setup Methods
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            addBoxButton.centerXAnchor.constraint(equalTo: arView.centerXAnchor),
+            addBoxButton.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+        ])
+    }
+    
+    private func addSubviewForARView() {
+        let subviews = [addBoxButton]
+        subviews.forEach { subview in
+            subview.translatesAutoresizingMaskIntoConstraints = false
+            arView.addSubview(subview)
+        }
+    }
+    
+    
+    // MARK: - Tap Methods
     @objc func handleTapSwitchColorBox(_ recognizer: UITapGestureRecognizer) {
         guard let view = self.view else { return }
         
         let tapLocation = recognizer.location(in: view)
         
         if let entity = arView.entity(at: tapLocation) as? ModelEntity {
-            let material = SimpleMaterial(color: .blue, isMetallic: true)
+            let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
             entity.model?.materials = [material]
         }
     }
     
-    func addBox() {
-        let anchor = AnchorEntity(plane: .horizontal)
+    @objc func handleTapRemoveBox(_ recognizer: UITapGestureRecognizer) {
+        guard let view = self.view else { return }
         
+        let tapLocation = recognizer.location(in: view)
+        
+        if let entity = arView.entity(at: tapLocation) as? ModelEntity {
+            entity.anchor?.removeChild(entity)
+        }
+    }
+    
+    @objc func addBox() {
+        let anchor = AnchorEntity(plane: .horizontal)
         let material = SimpleMaterial(color: .systemRed, isMetallic: true)
+        
         let box = ModelEntity(mesh: .generateBox(size: 0.2), materials: [material])
         box.generateCollisionShapes(recursive: true)
-        arView.installGestures(.all, for: box)
         box.transform = Transform(pitch: 0, yaw: 1, roll: 0)
-        anchor.addChild(box)
         
+        arView.installGestures(.all, for: box)
+        
+        anchor.addChild(box)
         arView.scene.addAnchor(anchor)
-
     }
     
     
-
+    
+    
 }
