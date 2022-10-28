@@ -9,26 +9,32 @@
 /* Begin PBXBuildFile section */
 		F8417C65290A7A5200415558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C64290A7A5200415558 /* AppDelegate.swift */; };
 		F8417C67290A7A5200415558 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C66290A7A5200415558 /* MainView.swift */; };
-		F8417C6B290A7A5300415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C6A290A7A5300415558 /* Assets.xcassets */; };
 		F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C6D290A7A5300415558 /* Preview Assets.xcassets */; };
 		F8417C77290A7D7100415558 /* ARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C76290A7D7100415558 /* ARViewControllerContainer.swift */; };
 		F8417C79290A813200415558 /* MyARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C78290A813200415558 /* MyARView.swift */; };
 		F8417C7B290A83B600415558 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C7A290A83B600415558 /* ARViewController.swift */; };
 		F8417C81290A899C00415558 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C80290A899C00415558 /* UIColorExtension.swift */; };
 		F8417C83290AD0E100415558 /* ARViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C82290AD0E100415558 /* ARViewExtension.swift */; };
+		F8417C88290C086B00415558 /* ARViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C87290C086B00415558 /* ARViewControllerExtension.swift */; };
+		F8417C91290C0A8B00415558 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C90290C0A8B00415558 /* Constans.swift */; };
+		F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C94290C0EBA00415558 /* Assets.xcassets */; };
+		F8417C97290C0EF900415558 /* SceneKit Asset Catalog.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F8417C61290A7A5200415558 /* TestForMixar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestForMixar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8417C64290A7A5200415558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8417C66290A7A5200415558 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		F8417C6A290A7A5300415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8417C6D290A7A5300415558 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F8417C76290A7D7100415558 /* ARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerContainer.swift; sourceTree = "<group>"; };
 		F8417C78290A813200415558 /* MyARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyARView.swift; sourceTree = "<group>"; };
 		F8417C7A290A83B600415558 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F8417C80290A899C00415558 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F8417C82290AD0E100415558 /* ARViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewExtension.swift; sourceTree = "<group>"; };
+		F8417C87290C086B00415558 /* ARViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerExtension.swift; sourceTree = "<group>"; };
+		F8417C90290C0A8B00415558 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
+		F8417C94290C0EBA00415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = "SceneKit Asset Catalog.scnassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +71,8 @@
 				F8417C7E290A88F300415558 /* Views */,
 				F8417C7F290A892200415558 /* ViewControllers */,
 				F8417C7C290A886300415558 /* Extensions */,
-				F8417C6A290A7A5300415558 /* Assets.xcassets */,
+				F8417C84290BE6FC00415558 /* Resource */,
+				F8417C8F290C0A2800415558 /* Helpers */,
 				F8417C6C290A7A5300415558 /* Preview Content */,
 			);
 			path = TestForMixar;
@@ -84,6 +91,7 @@
 			children = (
 				F8417C80290A899C00415558 /* UIColorExtension.swift */,
 				F8417C82290AD0E100415558 /* ARViewExtension.swift */,
+				F8417C87290C086B00415558 /* ARViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -112,6 +120,23 @@
 				F8417C7A290A83B600415558 /* ARViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F8417C84290BE6FC00415558 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F8417C94290C0EBA00415558 /* Assets.xcassets */,
+				F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F8417C8F290C0A2800415558 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F8417C90290C0A8B00415558 /* Constans.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,7 +198,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */,
-				F8417C6B290A7A5300415558 /* Assets.xcassets in Resources */,
+				F8417C97290C0EF900415558 /* SceneKit Asset Catalog.scnassets in Resources */,
+				F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +211,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8417C67290A7A5200415558 /* MainView.swift in Sources */,
+				F8417C88290C086B00415558 /* ARViewControllerExtension.swift in Sources */,
+				F8417C91290C0A8B00415558 /* Constans.swift in Sources */,
 				F8417C83290AD0E100415558 /* ARViewExtension.swift in Sources */,
 				F8417C77290A7D7100415558 /* ARViewControllerContainer.swift in Sources */,
 				F8417C79290A813200415558 /* MyARView.swift in Sources */,
