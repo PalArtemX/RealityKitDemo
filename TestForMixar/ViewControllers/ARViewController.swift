@@ -13,6 +13,7 @@ import Combine
 
 class ARViewController: UIViewController {
 
+    var newReferenceImages:Set<ARReferenceImage> = Set<ARReferenceImage>()
     var arView: ARView!
     private var speedMovePositionBox: Float = 0.03
     private var boxSize: Float = 0.04
@@ -63,15 +64,13 @@ class ARViewController: UIViewController {
         arView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(arView)
         
-        // MARK: debugOptions
-        arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
+//        // MARK: debugOptions
+//        arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
         
-        setupConfigurationReferenceImage()
         addSubviewForARView()
         setupConstraints()
         setupControlBox()
         
-        //arView.enableLongPressGestureRecognizer()
         enableLongPressGestureRecognizer()
         arView.enableTapGestureRecognizer()
     }
@@ -83,20 +82,6 @@ class ARViewController: UIViewController {
         resetTrackingConfig()
     }
     
-    
-    
-    // MARK: - Methods
-    private func setupConfigurationReferenceImage() {
-        let arConfiguration = ARWorldTrackingConfiguration()
-        arConfiguration.planeDetection = [.vertical, .horizontal]
-        arConfiguration.isLightEstimationEnabled = true
-        arConfiguration.environmentTexturing = .automatic
-        
-        if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
-            arConfiguration.maximumNumberOfTrackedImages = 1
-            arConfiguration.detectionImages = referenceImages
-        }
-    }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
