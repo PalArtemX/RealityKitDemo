@@ -6,7 +6,8 @@
 //
 
 import ARKit
-
+import RealityKit
+import Combine
 
 extension ARViewController: ARSessionDelegate {
     
@@ -16,6 +17,40 @@ extension ARViewController: ARSessionDelegate {
                 placeObject(entityName: anchorName, anchor: anchor)
             }
         }
+    }
+    
+    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+        guard let imageAnchor = anchors.first as? ARImageAnchor, let _ = imageAnchor.referenceImage.name else {
+            return
+        }
+        let anchorEntity = AnchorEntity(anchor: imageAnchor)
+        
+        let _ = ModelEntity.loadModelAsync(named: .constants.nameModelCoin)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    print("🌉 Image recognized")
+                case .failure(let error):
+                    print("⚠️ Error: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] object in
+                anchorEntity.addChild(object)
+                self?.arView.scene.anchors.append(anchorEntity)
+            }
+            .store(in: &cancellable)
+    }
+    
+    
+    func resetTrackingConfig() {
+        guard let refImg = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+            return
+        }
+        let config = ARWorldTrackingConfiguration()
+        config.detectionImages = refImg
+        config.maximumNumberOfTrackedImages = 1
+        let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
+        arView.session.run(config, options: ARSession.RunOptions(options))
     }
     
 }

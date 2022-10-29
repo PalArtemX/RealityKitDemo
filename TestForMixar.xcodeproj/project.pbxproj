@@ -18,8 +18,8 @@
 		F8417C88290C086B00415558 /* ARViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C87290C086B00415558 /* ARViewControllerExtension.swift */; };
 		F8417C91290C0A8B00415558 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C90290C0A8B00415558 /* Constans.swift */; };
 		F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C94290C0EBA00415558 /* Assets.xcassets */; };
-		F8417C97290C0EF900415558 /* SceneKit Asset Catalog.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */; };
 		F84DA8C3290D535300910269 /* MoveBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84DA8C2290D535300910269 /* MoveBoxButton.swift */; };
+		F84DA8C5290D8BF800910269 /* coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F84DA8C4290D84D300910269 /* coin.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		F8417C87290C086B00415558 /* ARViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerExtension.swift; sourceTree = "<group>"; };
 		F8417C90290C0A8B00415558 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		F8417C94290C0EBA00415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = "SceneKit Asset Catalog.scnassets"; sourceTree = "<group>"; };
 		F84DA8C2290D535300910269 /* MoveBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveBoxButton.swift; sourceTree = "<group>"; };
+		F84DA8C4290D84D300910269 /* coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				F8417C94290C0EBA00415558 /* Assets.xcassets */,
-				F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */,
+				F84DA8C4290D84D300910269 /* coin.usdz */,
+				F84DA8C6290D8C4200910269 /* Crystal */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -140,6 +141,13 @@
 				F8417C90290C0A8B00415558 /* Constans.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F84DA8C6290D8C4200910269 /* Crystal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Crystal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +208,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F84DA8C5290D8BF800910269 /* coin.usdz in Resources */,
 				F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */,
-				F8417C97290C0EF900415558 /* SceneKit Asset Catalog.scnassets in Resources */,
 				F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,18 +9,26 @@
 import UIKit
 import RealityKit
 import ARKit
+import Combine
 
 class ARViewController: UIViewController {
 
-    private var arView: ARView!
+    var arView: ARView!
     private var speedMovePositionBox: Float = 0.03
+    var cancellable: Set<AnyCancellable> = []
     
-    let removeAllBoxes: MoveBoxButton = {
+//    lazy var labelImageRecognized: UILabel = {
+//        let label = UILabel()
+//        label.isHidden = true
+//        label.text = "Image recognized"
+//        return
+//    }()
+    
+    lazy var removeAllBoxes: MoveBoxButton = {
         let button = MoveBoxButton(systemName: "trash.square", color: .red, isHidden: true, action: #selector(removeAllAnchors))
         button.configuration?.title = "All"
         return button
     }()
-    
     lazy var buttonDown: MoveBoxButton = {
         let button = MoveBoxButton(systemName: "chevron.down", action: #selector(tapMoveBox))
         return button
@@ -57,9 +65,9 @@ class ARViewController: UIViewController {
         // MARK: debugOptions
         arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
         
+        setupConfiguration()
         addSubviewForARView()
         setupConstraints()
-        
         setupControlBox()
         
         //arView.enableLongPressGestureRecognizer()
@@ -67,9 +75,28 @@ class ARViewController: UIViewController {
         arView.enableTapGestureRecognizer()
     }
     
-
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        resetTrackingConfig()
+    }
+    
+    
     
     // MARK: - Methods
+    private func setupConfiguration() {
+        let arConfiguration = ARWorldTrackingConfiguration()
+        arConfiguration.planeDetection = [.vertical, .horizontal]
+        arConfiguration.isLightEstimationEnabled = true
+        arConfiguration.environmentTexturing = .automatic
+        
+        if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
+            arConfiguration.maximumNumberOfTrackedImages = 1
+            arConfiguration.detectionImages = referenceImages
+        }
+    }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             arView.topAnchor.constraint(equalTo: view.topAnchor),
