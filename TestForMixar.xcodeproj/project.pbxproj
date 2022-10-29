@@ -19,6 +19,7 @@
 		F8417C91290C0A8B00415558 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C90290C0A8B00415558 /* Constans.swift */; };
 		F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C94290C0EBA00415558 /* Assets.xcassets */; };
 		F8417C97290C0EF900415558 /* SceneKit Asset Catalog.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */; };
+		F84DA8C3290D535300910269 /* MoveBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84DA8C2290D535300910269 /* MoveBoxButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		F8417C90290C0A8B00415558 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		F8417C94290C0EBA00415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8417C96290C0EF900415558 /* SceneKit Asset Catalog.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = "SceneKit Asset Catalog.scnassets"; sourceTree = "<group>"; };
+		F84DA8C2290D535300910269 /* MoveBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveBoxButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				F8417C78290A813200415558 /* MyARView.swift */,
 				F8417C66290A7A5200415558 /* MainView.swift */,
+				F84DA8C2290D535300910269 /* MoveBoxButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				F8417C79290A813200415558 /* MyARView.swift in Sources */,
 				F8417C7B290A83B600415558 /* ARViewController.swift in Sources */,
 				F8417C65290A7A5200415558 /* AppDelegate.swift in Sources */,
+				F84DA8C3290D535300910269 /* MoveBoxButton.swift in Sources */,
 				F8417C81290A899C00415558 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

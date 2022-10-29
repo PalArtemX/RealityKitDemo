@@ -11,21 +11,23 @@ import ARKit
 
 extension ARView {
     
-    // MARK: - Delete Box
-    func enableLongPressGestureRecognizer() {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture))
-        self.addGestureRecognizer(longPressGestureRecognizer)
-    }
     
-    @objc func longPressGesture(_ recognizer: UILongPressGestureRecognizer) {
-        let tapLocation = recognizer.location(in: self)
-
-        if let entity = self.entity(at: tapLocation) {
-            if let anchorEntity = entity.anchor, anchorEntity.name == .constants.nameAnchorBox {
-                anchorEntity.removeFromParent()
-            }
-        }
-    }
+    
+     //MARK: - Delete Box
+//    func enableLongPressGestureRecognizer() {
+//        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture))
+//        self.addGestureRecognizer(longPressGestureRecognizer)
+//    }
+//
+//    @objc func longPressGesture(_ recognizer: UILongPressGestureRecognizer) {
+//        let tapLocation = recognizer.location(in: self)
+//
+//        if let entity = self.entity(at: tapLocation) {
+//            if let anchorEntity = entity.anchor, anchorEntity.name == .constants.nameAnchorBox {
+//                anchorEntity.removeFromParent()
+//            }
+//        }
+//    }
     
     // MARK: - enableTapGestureRecognizer
     func enableTapGestureRecognizer() {
