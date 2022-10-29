@@ -20,6 +20,9 @@
 		F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C94290C0EBA00415558 /* Assets.xcassets */; };
 		F84DA8C3290D535300910269 /* MoveBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84DA8C2290D535300910269 /* MoveBoxButton.swift */; };
 		F84DA8C5290D8BF800910269 /* coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F84DA8C4290D84D300910269 /* coin.usdz */; };
+		F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E4290DA92A0043CED7 /* crystal.usdz */; };
+		F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E5290DA92A0043CED7 /* crystal2.usdz */; };
+		F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E6290DA92A0043CED7 /* crystal3.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		F8417C94290C0EBA00415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F84DA8C2290D535300910269 /* MoveBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveBoxButton.swift; sourceTree = "<group>"; };
 		F84DA8C4290D84D300910269 /* coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin.usdz; sourceTree = "<group>"; };
+		F85085E4290DA92A0043CED7 /* crystal.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal.usdz; sourceTree = "<group>"; };
+		F85085E5290DA92A0043CED7 /* crystal2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal2.usdz; sourceTree = "<group>"; };
+		F85085E6290DA92A0043CED7 /* crystal3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal3.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				F8417C94290C0EBA00415558 /* Assets.xcassets */,
-				F84DA8C4290D84D300910269 /* coin.usdz */,
-				F84DA8C6290D8C4200910269 /* Crystal */,
+				F85085E3290DA8600043CED7 /* Models */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -143,11 +148,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		F84DA8C6290D8C4200910269 /* Crystal */ = {
+		F85085E3290DA8600043CED7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F85085E4290DA92A0043CED7 /* crystal.usdz */,
+				F85085E5290DA92A0043CED7 /* crystal2.usdz */,
+				F85085E6290DA92A0043CED7 /* crystal3.usdz */,
+				F84DA8C4290D84D300910269 /* coin.usdz */,
 			);
-			path = Crystal;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +218,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F84DA8C5290D8BF800910269 /* coin.usdz in Resources */,
+				F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */,
 				F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */,
+				F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */,
+				F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */,
 				F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

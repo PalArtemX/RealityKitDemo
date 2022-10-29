@@ -15,6 +15,7 @@ class ARViewController: UIViewController {
 
     var arView: ARView!
     private var speedMovePositionBox: Float = 0.03
+    private var boxSize: Float = 0.04
     var cancellable: Set<AnyCancellable> = []
     
 //    lazy var labelImageRecognized: UILabel = {
@@ -65,7 +66,7 @@ class ARViewController: UIViewController {
         // MARK: debugOptions
         arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
         
-        setupConfiguration()
+        setupConfigurationReferenceImage()
         addSubviewForARView()
         setupConstraints()
         setupControlBox()
@@ -85,7 +86,7 @@ class ARViewController: UIViewController {
     
     
     // MARK: - Methods
-    private func setupConfiguration() {
+    private func setupConfigurationReferenceImage() {
         let arConfiguration = ARWorldTrackingConfiguration()
         arConfiguration.planeDetection = [.vertical, .horizontal]
         arConfiguration.isLightEstimationEnabled = true
@@ -147,12 +148,7 @@ class ARViewController: UIViewController {
         
     @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
-        
-        if arView.scene.anchors.isEmpty {
-            [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, removeAllBoxes].forEach { button in
-                button.isHidden = true
-            }
-        }
+        isHiddenButtonMoveBox(isHidden: true)
     }
     
     @objc func tapMoveBox(_ sender: UIButton) {
@@ -177,7 +173,7 @@ class ARViewController: UIViewController {
     }
     
     func placeObject(entityName: String, anchor: ARAnchor) {
-        let box = MeshResource.generateBox(size: 0.03)
+        let box = MeshResource.generateBox(size: boxSize)
         let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
         let modelEntity = ModelEntity(mesh: box, materials: [material])
         let anchorEntity = AnchorEntity(anchor: anchor)
@@ -205,11 +201,15 @@ class ARViewController: UIViewController {
         if let entity = arView.entity(at: tapLocation) {
             if let anchorEntity = entity.anchor, anchorEntity.name == .constants.nameAnchorBox {
                 anchorEntity.removeFromParent()
-                if arView.scene.anchors.isEmpty {
-                    [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, removeAllBoxes].forEach { button in
-                        button.isHidden = true
-                    }
-                }
+                isHiddenButtonMoveBox(isHidden: true)
+            }
+        }
+    }
+    
+    private func isHiddenButtonMoveBox(isHidden: Bool) {
+        if arView.scene.anchors.isEmpty {
+            [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, removeAllBoxes].forEach { button in
+                button.isHidden = isHidden
             }
         }
     }

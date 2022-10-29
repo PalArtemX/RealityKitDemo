@@ -12,6 +12,8 @@ struct Constants {
     let nameAnchorBox = "AnchorBox"
     let nameModelCoin = "coin"
     let nameModelCrystal = "crystal"
+    let nameModelCrystal2 = "crystal2"
+    let nameModelCrystal3 = "crystal3"
     let nameImageMarker = "marker"
 }
 

@@ -25,7 +25,7 @@ extension ARViewController: ARSessionDelegate {
         }
         let anchorEntity = AnchorEntity(anchor: imageAnchor)
         
-        let _ = ModelEntity.loadModelAsync(named: .constants.nameModelCoin)
+        let _ = ModelEntity.loadModelAsync(named: .constants.nameModelCrystal)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -43,11 +43,11 @@ extension ARViewController: ARSessionDelegate {
     
     
     func resetTrackingConfig() {
-        guard let refImg = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+        guard let referenceImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             return
         }
         let config = ARWorldTrackingConfiguration()
-        config.detectionImages = refImg
+        config.detectionImages = referenceImage
         config.maximumNumberOfTrackedImages = 1
         let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
         arView.session.run(config, options: ARSession.RunOptions(options))
