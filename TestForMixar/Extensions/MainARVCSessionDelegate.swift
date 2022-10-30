@@ -43,15 +43,4 @@ extension MainARViewController: ARSessionDelegate {
     }
     
     
-    func resetTrackingConfig() {
-        guard let referenceImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-            return
-        }
-        let config = ARWorldTrackingConfiguration()
-        config.detectionImages = referenceImage
-        config.maximumNumberOfTrackedImages = 1
-        let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
-        arView.session.run(config, options: ARSession.RunOptions(options))
-    }
-    
 }

@@ -64,26 +64,40 @@ class MainARViewController: UIViewController {
         arView.session.delegate = self
         arView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(arView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         // MARK: debugOptions
         arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
         
+        setupConfiguration()
+        
         addSubviewForARView()
         setupConstraints()
-
         enableLongPressGestureRecognizer()
         enableTapGestureRecognizer()
     }
-    
-  
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        resetTrackingConfig()
-    }
-    
+
     
     // MARK: - Methods
+    private func setupConfiguration() {
+        guard let referenceImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+            return
+        }
+        let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
+       
+        arView.automaticallyConfigureSession = false
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        configuration.environmentTexturing = .automatic
+        configuration.detectionImages = referenceImage
+        configuration.maximumNumberOfTrackedImages = 1
+        
+        arView.session.run(configuration, options: ARSession.RunOptions(options))
+    }
+    
     private func addSubviewForARView() {
         let subviews = [removeAllBoxes, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging]
         subviews.forEach { subview in
