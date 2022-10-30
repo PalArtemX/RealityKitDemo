@@ -27,7 +27,7 @@ class MainARViewController: UIViewController {
 //        return
 //    }()
     
-    lazy var removeAllBoxes: MoveButton = {
+    lazy var buttonRemoveAll: MoveButton = {
         let button = MoveButton(systemName: "trash.square", color: .red, isHidden: true, action: #selector(removeAllAnchors))
         button.configuration?.title = "All"
         return button
@@ -57,7 +57,13 @@ class MainARViewController: UIViewController {
         return button
     }()
 
-
+    lazy var buttonPlaceCoins: MoveButton = {
+        let button = MoveButton(systemName: "plus.square.dashed", color: .green, isHidden: true, action: #selector(placeCoinsTwo))
+        button.configuration?.title = "Add Coins"
+        return button
+    }()
+    
+    // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
         arView = ARView()
@@ -99,7 +105,7 @@ class MainARViewController: UIViewController {
     }
     
     private func addSubviewForARView() {
-        let subviews = [removeAllBoxes, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging]
+        let subviews = [buttonRemoveAll, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging, buttonPlaceCoins]
         subviews.forEach { subview in
             subview.translatesAutoresizingMaskIntoConstraints = false
             arView.addSubview(subview)
@@ -113,8 +119,8 @@ class MainARViewController: UIViewController {
             arView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             arView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            removeAllBoxes.trailingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            removeAllBoxes.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            buttonRemoveAll.trailingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            buttonRemoveAll.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             
             buttonDown.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             buttonDown.centerXAnchor.constraint(equalTo: arView.centerXAnchor),
@@ -132,39 +138,44 @@ class MainARViewController: UIViewController {
             buttonLeft.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -80),
             
             buttonRight.leadingAnchor.constraint(equalTo: buttonDown.trailingAnchor, constant: 40),
-            buttonRight.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -80)
+            buttonRight.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -80),
+            
+            buttonPlaceCoins.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
+            buttonPlaceCoins.trailingAnchor.constraint(equalTo: arView.trailingAnchor, constant: -10)
         ])
     }
     
     
     @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
-        isHiddenButtonMove(isHidden: true)
+        isHiddenButtonMove()
     }
     
     @objc func tapMoveBox(_ sender: UIButton) {
         arView.scene.anchors.forEach { anchor in
-            switch sender {
-            case buttonDown:
-                anchor.position.y += doubleSpeedMoveBox ? -speedMoveBox*2 : -speedMoveBox
-            case buttonUp:
-                anchor.position.y += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
-            case buttonLeft:
-                anchor.position.x += doubleSpeedMoveBox ? -speedMoveBox*2 : -speedMoveBox
-            case buttonRight:
-                anchor.position.x += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
-            case buttonZBegging:
-                anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : -speedMoveBox
-            case buttonZOnMe:
-                anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
-            default:
-                break
+            if anchor.name == .constants.nameAnchorBox {
+                switch sender {
+                case buttonDown:
+                    anchor.position.y += doubleSpeedMoveBox ? -speedMoveBox*2 : -speedMoveBox
+                case buttonUp:
+                    anchor.position.y += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
+                case buttonLeft:
+                    anchor.position.x += doubleSpeedMoveBox ? -speedMoveBox*2 : -speedMoveBox
+                case buttonRight:
+                    anchor.position.x += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
+                case buttonZBegging:
+                    anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : -speedMoveBox
+                case buttonZOnMe:
+                    anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
+                default:
+                    break
+                }
             }
         }
     }
     
     
-    func placeObject(entityName: String, anchor: ARAnchor) {
+    func placeBox(entityName: String, anchor: ARAnchor) {
         let box = MeshResource.generateBox(size: boxSize)
         let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
         let modelEntity = ModelEntity(mesh: box, materials: [material])
@@ -176,19 +187,73 @@ class MainARViewController: UIViewController {
         anchorEntity.addChild(modelEntity)
         arView.scene.addAnchor(anchorEntity)
         
-        [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, removeAllBoxes].forEach { button in
+        [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, buttonRemoveAll, buttonPlaceCoins, buttonPlaceCoins].forEach { button in
             button.isHidden = false
         }
         
     }
     
-    func isHiddenButtonMove(isHidden: Bool) {
+    func isHiddenButtonMove() {
+        var countBoxAnchors = 0
+        
         if arView.scene.anchors.isEmpty {
-            [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, removeAllBoxes].forEach { button in
-                button.isHidden = isHidden
+            [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, buttonRemoveAll, buttonPlaceCoins].forEach { button in
+                button.isHidden = true
+            }
+        } else {
+            for i in 0..<arView.scene.anchors.count {
+                if arView.scene.anchors[i].name == .constants.nameAnchorBox {
+                    countBoxAnchors += 1
+                }
+            }
+            if countBoxAnchors == 0 {
+                [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, buttonPlaceCoins].forEach { button in
+                    button.isHidden = true
+                }
             }
         }
+        
+        
     }
+    
+//    @objc func tapPlaceCoins() {
+//        let tapLocation = CGPoint(x: 200, y: 400)
+//        let result = arView.raycast(from: tapLocation, allowing: .estimatedPlane, alignment: .horizontal)
+//
+//        if let firstResult = result.first {
+//            let anchor = ARAnchor(name: .constants.nameModelCoin, transform: firstResult.worldTransform)
+//            arView.session.add(anchor: anchor)
+//        }
+//    }
+    
+//    func placeCoins(entityName: String, anchor: ARAnchor) {
+//        
+//        let anchorEntity = AnchorEntity(anchor: anchor)
+//        anchorEntity.name = entityName
+//
+//        let modelEntity = try! ModelEntity.loadModel(named: "cup_saucer_set")
+//
+//
+//        anchorEntity.addChild(modelEntity)
+//        arView.scene.addAnchor(anchorEntity)
+//
+//    }
+    
+    @objc func placeCoinsTwo() {
+        
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+
+        let modelEntity = try! ModelEntity.loadModel(named: "cup_saucer_set")
+
+
+        anchorEntity.addChild(modelEntity)
+        arView.scene.addAnchor(anchorEntity)
+        
+        
+        buttonRemoveAll.isHidden = false
+    }
+    
+
     
 }
 

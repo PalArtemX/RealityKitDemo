@@ -13,9 +13,14 @@ extension MainARViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {
+            print("Anchor: \(String(describing: anchor.name?.description))")
             if let anchorName = anchor.name, anchorName == .constants.nameAnchorBox {
-                placeObject(entityName: anchorName, anchor: anchor)
+                placeBox(entityName: anchorName, anchor: anchor)
             }
+//            if let anchorName = anchor.name, anchorName == .constants.nameModelCoin {
+//                placeCoins(entityName: anchorName, anchor: anchor)
+//                print("placeCoin>>>>>>>>>>>>")
+//            }
         }
     }
     

@@ -19,11 +19,13 @@
 		F8417C91290C0A8B00415558 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C90290C0A8B00415558 /* Constans.swift */; };
 		F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C94290C0EBA00415558 /* Assets.xcassets */; };
 		F84DA8C3290D535300910269 /* MoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84DA8C2290D535300910269 /* MoveButton.swift */; };
-		F84DA8C5290D8BF800910269 /* coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F84DA8C4290D84D300910269 /* coin.usdz */; };
 		F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E4290DA92A0043CED7 /* crystal.usdz */; };
 		F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E5290DA92A0043CED7 /* crystal2.usdz */; };
 		F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E6290DA92A0043CED7 /* crystal3.usdz */; };
 		F85085ED290E80B60043CED7 /* MainARVCPressGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */; };
+		F8E792C9290ED7E200847727 /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792C8290ED7E200847727 /* toy_biplane.usdz */; };
+		F8E792CF290EDA4D00847727 /* coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792CE290EDA4D00847727 /* coin.usdz */; };
+		F8E792D1290EDB9800847727 /* cup_saucer_set.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +42,13 @@
 		F8417C90290C0A8B00415558 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		F8417C94290C0EBA00415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F84DA8C2290D535300910269 /* MoveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveButton.swift; sourceTree = "<group>"; };
-		F84DA8C4290D84D300910269 /* coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin.usdz; sourceTree = "<group>"; };
 		F85085E4290DA92A0043CED7 /* crystal.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal.usdz; sourceTree = "<group>"; };
 		F85085E5290DA92A0043CED7 /* crystal2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal2.usdz; sourceTree = "<group>"; };
 		F85085E6290DA92A0043CED7 /* crystal3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal3.usdz; sourceTree = "<group>"; };
 		F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCPressGesture.swift; sourceTree = "<group>"; };
+		F8E792C8290ED7E200847727 /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
+		F8E792CE290EDA4D00847727 /* coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin.usdz; sourceTree = "<group>"; };
+		F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cup_saucer_set.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +161,9 @@
 				F85085E4290DA92A0043CED7 /* crystal.usdz */,
 				F85085E5290DA92A0043CED7 /* crystal2.usdz */,
 				F85085E6290DA92A0043CED7 /* crystal3.usdz */,
-				F84DA8C4290D84D300910269 /* coin.usdz */,
+				F8E792C8290ED7E200847727 /* toy_biplane.usdz */,
+				F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */,
+				F8E792CE290EDA4D00847727 /* coin.usdz */,
 			);
 			path = ARModels;
 			sourceTree = "<group>";
@@ -220,7 +226,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F84DA8C5290D8BF800910269 /* coin.usdz in Resources */,
+				F8E792CF290EDA4D00847727 /* coin.usdz in Resources */,
+				F8E792D1290EDB9800847727 /* cup_saucer_set.usdz in Resources */,
+				F8E792C9290ED7E200847727 /* toy_biplane.usdz in Resources */,
 				F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */,
 				F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */,
 				F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */,
