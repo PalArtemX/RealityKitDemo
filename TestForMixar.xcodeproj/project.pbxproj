@@ -24,8 +24,8 @@
 		F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E6290DA92A0043CED7 /* crystal3.usdz */; };
 		F85085ED290E80B60043CED7 /* MainARVCPressGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */; };
 		F8E792C9290ED7E200847727 /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792C8290ED7E200847727 /* toy_biplane.usdz */; };
-		F8E792CF290EDA4D00847727 /* coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792CE290EDA4D00847727 /* coin.usdz */; };
 		F8E792D1290EDB9800847727 /* cup_saucer_set.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */; };
+		F8E792D3290EE71200847727 /* Stylized_Coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792D2290EE71200847727 /* Stylized_Coin.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +47,8 @@
 		F85085E6290DA92A0043CED7 /* crystal3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal3.usdz; sourceTree = "<group>"; };
 		F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCPressGesture.swift; sourceTree = "<group>"; };
 		F8E792C8290ED7E200847727 /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
-		F8E792CE290EDA4D00847727 /* coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin.usdz; sourceTree = "<group>"; };
 		F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cup_saucer_set.usdz; sourceTree = "<group>"; };
+		F8E792D2290EE71200847727 /* Stylized_Coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Stylized_Coin.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +163,7 @@
 				F85085E6290DA92A0043CED7 /* crystal3.usdz */,
 				F8E792C8290ED7E200847727 /* toy_biplane.usdz */,
 				F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */,
-				F8E792CE290EDA4D00847727 /* coin.usdz */,
+				F8E792D2290EE71200847727 /* Stylized_Coin.usdz */,
 			);
 			path = ARModels;
 			sourceTree = "<group>";
@@ -226,13 +226,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8E792CF290EDA4D00847727 /* coin.usdz in Resources */,
 				F8E792D1290EDB9800847727 /* cup_saucer_set.usdz in Resources */,
 				F8E792C9290ED7E200847727 /* toy_biplane.usdz in Resources */,
 				F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */,
 				F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */,
 				F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */,
 				F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */,
+				F8E792D3290EE71200847727 /* Stylized_Coin.usdz in Resources */,
 				F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

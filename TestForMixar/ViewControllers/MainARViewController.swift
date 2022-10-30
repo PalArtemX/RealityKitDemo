@@ -58,7 +58,7 @@ class MainARViewController: UIViewController {
     }()
 
     lazy var buttonPlaceCoins: MoveButton = {
-        let button = MoveButton(systemName: "plus.square.dashed", color: .green, isHidden: true, action: #selector(placeCoinsTwo))
+        let button = MoveButton(systemName: "plus.square.dashed", color: .green, isHidden: true, action: #selector(placeCoinsCoins))
         button.configuration?.title = "Add Coins"
         return button
     }()
@@ -212,38 +212,17 @@ class MainARViewController: UIViewController {
                 }
             }
         }
-        
-        
     }
+
     
-//    @objc func tapPlaceCoins() {
-//        let tapLocation = CGPoint(x: 200, y: 400)
-//        let result = arView.raycast(from: tapLocation, allowing: .estimatedPlane, alignment: .horizontal)
-//
-//        if let firstResult = result.first {
-//            let anchor = ARAnchor(name: .constants.nameModelCoin, transform: firstResult.worldTransform)
-//            arView.session.add(anchor: anchor)
-//        }
-//    }
     
-//    func placeCoins(entityName: String, anchor: ARAnchor) {
-//        
-//        let anchorEntity = AnchorEntity(anchor: anchor)
-//        anchorEntity.name = entityName
-//
-//        let modelEntity = try! ModelEntity.loadModel(named: "cup_saucer_set")
-//
-//
-//        anchorEntity.addChild(modelEntity)
-//        arView.scene.addAnchor(anchorEntity)
-//
-//    }
-    
-    @objc func placeCoinsTwo() {
+    @objc func placeCoinsCoins() {
         
         let anchorEntity = AnchorEntity(plane: .horizontal)
 
-        let modelEntity = try! ModelEntity.loadModel(named: "cup_saucer_set")
+        //anchorEntity.position.y += 0.1
+        
+        let modelEntity = try! ModelEntity.loadModel(named: "Stylized_Coin")
 
 
         anchorEntity.addChild(modelEntity)

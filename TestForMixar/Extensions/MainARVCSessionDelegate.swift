@@ -17,10 +17,6 @@ extension MainARViewController: ARSessionDelegate {
             if let anchorName = anchor.name, anchorName == .constants.nameAnchorBox {
                 placeBox(entityName: anchorName, anchor: anchor)
             }
-//            if let anchorName = anchor.name, anchorName == .constants.nameModelCoin {
-//                placeCoins(entityName: anchorName, anchor: anchor)
-//                print("placeCoin>>>>>>>>>>>>")
-//            }
         }
     }
     
