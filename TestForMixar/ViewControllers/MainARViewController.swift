@@ -22,9 +22,7 @@ class MainARViewController: UIViewController {
     
     let labelImageRecognized: UIImageView = {
         var config = UIImage.SymbolConfiguration(hierarchicalColor: .white)
-        
-        
-        let image = UIImage(systemName: "photo.artframe", withConfiguration: config)
+        let image = UIImage(systemName: "photo", withConfiguration: config)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         imageView.isHidden = true
@@ -148,9 +146,9 @@ class MainARViewController: UIViewController {
             buttonRight.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -80),
             
             buttonPlaceCoins.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
-            buttonPlaceCoins.trailingAnchor.constraint(equalTo: arView.trailingAnchor, constant: -10),
+            buttonPlaceCoins.trailingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             
-            labelImageRecognized.leadingAnchor.constraint(equalTo: arView.leadingAnchor, constant: 10),
+            labelImageRecognized.leadingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             labelImageRecognized.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
             labelImageRecognized.widthAnchor.constraint(equalToConstant: 44)
         ])
