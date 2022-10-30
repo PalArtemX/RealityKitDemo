@@ -23,7 +23,7 @@
 		F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E5290DA92A0043CED7 /* crystal2.usdz */; };
 		F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E6290DA92A0043CED7 /* crystal3.usdz */; };
 		F85085ED290E80B60043CED7 /* MainARVCPressGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */; };
-		F8E792C9290ED7E200847727 /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792C8290ED7E200847727 /* toy_biplane.usdz */; };
+		F88B7912290F246B00E33998 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7911290F246B00E33998 /* Float+Extension.swift */; };
 		F8E792D1290EDB9800847727 /* cup_saucer_set.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */; };
 		F8E792D3290EE71200847727 /* coin1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792D2290EE71200847727 /* coin1.usdz */; };
 /* End PBXBuildFile section */
@@ -46,7 +46,7 @@
 		F85085E5290DA92A0043CED7 /* crystal2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal2.usdz; sourceTree = "<group>"; };
 		F85085E6290DA92A0043CED7 /* crystal3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal3.usdz; sourceTree = "<group>"; };
 		F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCPressGesture.swift; sourceTree = "<group>"; };
-		F8E792C8290ED7E200847727 /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
+		F88B7911290F246B00E33998 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cup_saucer_set.usdz; sourceTree = "<group>"; };
 		F8E792D2290EE71200847727 /* coin1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin1.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				F8417C80290A899C00415558 /* UIColor+Extension.swift */,
+				F88B7911290F246B00E33998 /* Float+Extension.swift */,
 				F8417C82290AD0E100415558 /* ARView+Extension.swift */,
 				F8417C87290C086B00415558 /* MainARVCSessionDelegate.swift */,
 				F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */,
@@ -161,7 +162,6 @@
 				F85085E4290DA92A0043CED7 /* crystal.usdz */,
 				F85085E5290DA92A0043CED7 /* crystal2.usdz */,
 				F85085E6290DA92A0043CED7 /* crystal3.usdz */,
-				F8E792C8290ED7E200847727 /* toy_biplane.usdz */,
 				F8E792D0290EDB9800847727 /* cup_saucer_set.usdz */,
 				F8E792D2290EE71200847727 /* coin1.usdz */,
 			);
@@ -227,7 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8E792D1290EDB9800847727 /* cup_saucer_set.usdz in Resources */,
-				F8E792C9290ED7E200847727 /* toy_biplane.usdz in Resources */,
 				F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */,
 				F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */,
 				F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */,
@@ -254,6 +253,7 @@
 				F8417C7B290A83B600415558 /* MainARViewController.swift in Sources */,
 				F8417C65290A7A5200415558 /* AppDelegate.swift in Sources */,
 				F84DA8C3290D535300910269 /* MoveButton.swift in Sources */,
+				F88B7912290F246B00E33998 /* Float+Extension.swift in Sources */,
 				F8417C81290A899C00415558 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

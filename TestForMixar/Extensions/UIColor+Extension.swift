@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 extension UIColor {
     static func randomColor() -> UIColor {
         return UIColor(displayP3Red: Double.random(in: 0...1),

@@ -28,6 +28,7 @@ extension MainARViewController {
         }
     }
     
+    
     // MARK: - TapGesture
     func enableTapGestureRecognizer() {
         let tapGestureRecognizerAddBox = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
@@ -48,6 +49,5 @@ extension MainARViewController {
             }
         }
     }
-    
     
 }

@@ -13,12 +13,13 @@ extension MainARViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {
-            print("Anchor: \(String(describing: anchor.name?.description))")
+            print("⚓️ Anchor: \(String(describing: anchor.name?.description))")
             if let anchorName = anchor.name, anchorName == .constants.nameAnchorBox {
                 placeBox(entityName: anchorName, anchor: anchor)
             }
         }
     }
+    
     
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
         guard let imageAnchor = anchors.first as? ARImageAnchor, let _ = imageAnchor.referenceImage.name else {

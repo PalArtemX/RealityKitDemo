@@ -13,6 +13,7 @@ import Combine
 
 class MainARViewController: UIViewController {
 
+    // MARK: - Properties
     //var newReferenceImages:Set<ARReferenceImage> = Set<ARReferenceImage>()
     var arView: ARView!
     private let speedMoveBox: Float = 0.03
@@ -21,8 +22,8 @@ class MainARViewController: UIViewController {
     var cancellable: Set<AnyCancellable> = []
     
     lazy var imageRecognized: UIImageView = {
-        var config = UIImage.SymbolConfiguration(hierarchicalColor: .white.withAlphaComponent(0.5))
-        let image = UIImage(systemName: "photo", withConfiguration: config)
+        var config = UIImage.SymbolConfiguration(hierarchicalColor: .white)
+        let image = UIImage(systemName: "circle.dashed.rectangle", withConfiguration: config)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         imageView.isHidden = true
@@ -65,14 +66,13 @@ class MainARViewController: UIViewController {
         let button = MoveButton(systemName: "chevron.compact.down", action: #selector(tapMoveBox))
         return button
     }()
-
     lazy var buttonPlaceCoins: MoveButton = {
-        let button = MoveButton(systemName: "plus.square.dashed", color: .green, isHidden: true, action: #selector(placeCoinsCoins))
-        button.configuration?.title = "Add Coins"
+        let button = MoveButton(systemName: "circle.hexagonpath.fill", color: .green, isHidden: true, action: #selector(placeCoinsCoins))
+        button.configuration?.title = "Coins"
         return button
     }()
     
-    // MARK: -
+    // MARK: - Life Cycle ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         arView = ARView()
@@ -84,11 +84,10 @@ class MainARViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // MARK: debugOptions
+        // FIXME: Debug Options
         arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
         
         setupConfiguration()
-        
         addSubviewForARView()
         setupConstraints()
         enableLongPressGestureRecognizer()
@@ -119,7 +118,6 @@ class MainARViewController: UIViewController {
             subview.translatesAutoresizingMaskIntoConstraints = false
             arView.addSubview(subview)
         }
-        
     }
     
     private func setupConstraints() {
@@ -162,7 +160,6 @@ class MainARViewController: UIViewController {
         ])
     }
     
-    
     @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
         isHiddenButtonMove()
@@ -171,7 +168,7 @@ class MainARViewController: UIViewController {
         labelScore.isHidden = true
     }
     
-    @objc func tapMoveBox(_ sender: UIButton) {
+    @objc private func tapMoveBox(_ sender: UIButton) {
         arView.scene.anchors.forEach { anchor in
             if anchor.name == .constants.nameAnchorBox {
                 switch sender {
@@ -194,24 +191,23 @@ class MainARViewController: UIViewController {
         }
     }
     
-    
     func placeBox(entityName: String, anchor: ARAnchor) {
-        let box = MeshResource.generateBox(size: boxSize)
-        let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
-        let modelEntity = ModelEntity(mesh: box, materials: [material])
-        let anchorEntity = AnchorEntity(anchor: anchor)
-        modelEntity.generateCollisionShapes(recursive: true)
-        arView.installGestures(.all, for: modelEntity)
-        anchorEntity.name = entityName
+    let box = MeshResource.generateBox(size: boxSize)
+    let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
+    let modelEntity = ModelEntity(mesh: box, materials: [material])
+    let anchorEntity = AnchorEntity(anchor: anchor)
         
-        anchorEntity.addChild(modelEntity)
-        arView.scene.addAnchor(anchorEntity)
-        
-        [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, buttonRemoveAll, buttonPlaceCoins, buttonPlaceCoins].forEach { button in
-            button.isHidden = false
-        }
-        
+    modelEntity.generateCollisionShapes(recursive: true)
+    arView.installGestures(.all, for: modelEntity)
+    anchorEntity.name = entityName
+    
+    anchorEntity.addChild(modelEntity)
+    arView.scene.addAnchor(anchorEntity)
+    
+    [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, buttonRemoveAll, buttonPlaceCoins, buttonPlaceCoins].forEach { button in
+        button.isHidden = false
     }
+}
     
     func isHiddenButtonMove() {
         var countBoxAnchors = 0
@@ -234,27 +230,21 @@ class MainARViewController: UIViewController {
         }
     }
 
-    
-    
-    @objc func placeCoinsCoins() {
-        
-        let anchorEntity = AnchorEntity(plane: .horizontal)
-
-        anchorEntity.position.y += 0.1
-        
-        let modelEntity = try! ModelEntity.loadModel(named: .constants.nameModelCoin1)
-
-        anchorEntity.addChild(modelEntity)
-        arView.scene.addAnchor(anchorEntity)
+    @objc private func placeCoinsCoins() {
+        for _ in 0...10 {
+            let anchorEntity = AnchorEntity(plane: .horizontal)
+            anchorEntity.position.y += .randomAnchorPosition() + 0.2
+            anchorEntity.position.x += .randomAnchorPosition()
+            anchorEntity.position.z += .randomAnchorPosition()
+            
+            let modelEntity = try! ModelEntity.loadModel(named: .constants.nameModelCoin1)
+            anchorEntity.addChild(modelEntity)
+            arView.scene.addAnchor(anchorEntity)
+        }
         
         buttonRemoveAll.isHidden = false
         labelScore.isHidden = false
+        buttonPlaceCoins.isHidden = true
     }
     
-
-    
 }
-
-
-
-
