@@ -39,6 +39,7 @@ extension MainARViewController: ARSessionDelegate {
                 self?.arView.scene.anchors.append(anchorEntity)
             }
             .store(in: &cancellable)
+        doubleSpeedMoveBox = true
     }
     
     

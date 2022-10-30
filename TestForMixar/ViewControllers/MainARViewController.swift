@@ -15,7 +15,8 @@ class MainARViewController: UIViewController {
 
     var newReferenceImages:Set<ARReferenceImage> = Set<ARReferenceImage>()
     var arView: ARView!
-    private var speedMovePositionBox: Float = 0.03
+    private let speedMoveBox: Float = 0.03
+    var doubleSpeedMoveBox = false
     private var boxSize: Float = 0.04
     var cancellable: Set<AnyCancellable> = []
     
@@ -124,24 +125,24 @@ class MainARViewController: UIViewController {
     
     @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
-        isHiddenButtonMoveBox(isHidden: true)
+        isHiddenButtonMove(isHidden: true)
     }
     
     @objc func tapMoveBox(_ sender: UIButton) {
         arView.scene.anchors.forEach { anchor in
             switch sender {
             case buttonDown:
-                anchor.position.y += -speedMovePositionBox
+                anchor.position.y += doubleSpeedMoveBox ? -speedMoveBox*2 : -speedMoveBox
             case buttonUp:
-                anchor.position.y += speedMovePositionBox
+                anchor.position.y += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
             case buttonLeft:
-                anchor.position.x += -speedMovePositionBox
+                anchor.position.x += doubleSpeedMoveBox ? -speedMoveBox*2 : -speedMoveBox
             case buttonRight:
-                anchor.position.x += speedMovePositionBox
+                anchor.position.x += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
             case buttonZBegging:
-                anchor.position.z += -speedMovePositionBox
+                anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : -speedMoveBox
             case buttonZOnMe:
-                anchor.position.z += speedMovePositionBox
+                anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
             default:
                 break
             }
@@ -167,7 +168,7 @@ class MainARViewController: UIViewController {
         
     }
     
-    func isHiddenButtonMoveBox(isHidden: Bool) {
+    func isHiddenButtonMove(isHidden: Bool) {
         if arView.scene.anchors.isEmpty {
             [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, removeAllBoxes].forEach { button in
                 button.isHidden = isHidden

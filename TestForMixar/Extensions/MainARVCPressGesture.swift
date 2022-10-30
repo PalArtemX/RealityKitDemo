@@ -23,7 +23,7 @@ extension MainARViewController {
         if let entity = arView.entity(at: tapLocation) {
             if let anchorEntity = entity.anchor, anchorEntity.name == .constants.nameAnchorBox {
                 anchorEntity.removeFromParent()
-                isHiddenButtonMoveBox(isHidden: true)
+                isHiddenButtonMove(isHidden: true)
             }
         }
     }
