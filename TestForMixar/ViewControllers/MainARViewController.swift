@@ -20,17 +20,22 @@ class MainARViewController: UIViewController {
     private var boxSize: Float = 0.04
     var cancellable: Set<AnyCancellable> = []
     
-    let labelImageRecognized: UIImageView = {
-        var config = UIImage.SymbolConfiguration(hierarchicalColor: .white)
+    lazy var imageRecognized: UIImageView = {
+        var config = UIImage.SymbolConfiguration(hierarchicalColor: .white.withAlphaComponent(0.5))
         let image = UIImage(systemName: "photo", withConfiguration: config)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         imageView.isHidden = true
         return imageView
     }()
-    
-    
-    
+    lazy var labelScore: UILabel = {
+        let label = UILabel()
+        label.textColor = .white.withAlphaComponent(0.5)
+        label.text = "0"
+        label.font = .systemFont(ofSize: 44)
+        label.isHidden = true
+        return label
+    }()
     lazy var buttonRemoveAll: MoveButton = {
         let button = MoveButton(systemName: "trash.square", color: .red, isHidden: true, action: #selector(removeAllAnchors))
         button.configuration?.title = "All"
@@ -109,7 +114,7 @@ class MainARViewController: UIViewController {
     }
     
     private func addSubviewForARView() {
-        let subviews = [buttonRemoveAll, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging, buttonPlaceCoins, labelImageRecognized]
+        let subviews = [buttonRemoveAll, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging, buttonPlaceCoins, imageRecognized, labelScore]
         subviews.forEach { subview in
             subview.translatesAutoresizingMaskIntoConstraints = false
             arView.addSubview(subview)
@@ -148,9 +153,12 @@ class MainARViewController: UIViewController {
             buttonPlaceCoins.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
             buttonPlaceCoins.trailingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             
-            labelImageRecognized.leadingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            labelImageRecognized.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
-            labelImageRecognized.widthAnchor.constraint(equalToConstant: 44)
+            imageRecognized.leadingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            imageRecognized.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
+            imageRecognized.widthAnchor.constraint(equalToConstant: 44),
+            
+            labelScore.topAnchor.constraint(equalTo: imageRecognized.bottomAnchor, constant: 10),
+            labelScore.leadingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.leadingAnchor, constant: 10)
         ])
     }
     
@@ -158,8 +166,9 @@ class MainARViewController: UIViewController {
     @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
         isHiddenButtonMove()
-        labelImageRecognized.isHidden = true
+        imageRecognized.isHidden = true
         doubleSpeedMoveBox = false
+        labelScore.isHidden = true
     }
     
     @objc func tapMoveBox(_ sender: UIButton) {
@@ -175,7 +184,7 @@ class MainARViewController: UIViewController {
                 case buttonRight:
                     anchor.position.x += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
                 case buttonZBegging:
-                    anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : -speedMoveBox
+                    anchor.position.z += doubleSpeedMoveBox ? -speedMoveBox*2 : -speedMoveBox
                 case buttonZOnMe:
                     anchor.position.z += doubleSpeedMoveBox ? speedMoveBox*2 : speedMoveBox
                 default:
@@ -235,12 +244,11 @@ class MainARViewController: UIViewController {
         
         let modelEntity = try! ModelEntity.loadModel(named: .constants.nameModelCoin1)
 
-
         anchorEntity.addChild(modelEntity)
         arView.scene.addAnchor(anchorEntity)
         
-        
         buttonRemoveAll.isHidden = false
+        labelScore.isHidden = false
     }
     
 

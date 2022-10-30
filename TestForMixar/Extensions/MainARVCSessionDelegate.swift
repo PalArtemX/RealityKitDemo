@@ -41,7 +41,7 @@ extension MainARViewController: ARSessionDelegate {
             }
             .store(in: &cancellable)
         doubleSpeedMoveBox = true
-        labelImageRecognized.isHidden = false
+        imageRecognized.isHidden = false
     }
     
     
