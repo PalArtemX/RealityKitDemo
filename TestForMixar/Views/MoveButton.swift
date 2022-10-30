@@ -1,5 +1,5 @@
 //
-//  MoveBoxButton.swift
+//  MoveButton.swift
 //  TestForMixar
 //
 //  Created by Artem Paliutin on 29/10/2022.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-class MoveBoxButton: UIButton {
+class MoveButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

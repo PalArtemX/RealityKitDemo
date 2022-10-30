@@ -1,5 +1,5 @@
 //
-//  ARViewController.swift
+//  MainARViewController.swift
 //  TestForMixar
 //
 //  Created by Artem Paliutin on 27/10/2022.
@@ -11,7 +11,7 @@ import RealityKit
 import ARKit
 import Combine
 
-class ARViewController: UIViewController {
+class MainARViewController: UIViewController {
 
     var newReferenceImages:Set<ARReferenceImage> = Set<ARReferenceImage>()
     var arView: ARView!
@@ -26,33 +26,33 @@ class ARViewController: UIViewController {
 //        return
 //    }()
     
-    lazy var removeAllBoxes: MoveBoxButton = {
-        let button = MoveBoxButton(systemName: "trash.square", color: .red, isHidden: true, action: #selector(removeAllAnchors))
+    lazy var removeAllBoxes: MoveButton = {
+        let button = MoveButton(systemName: "trash.square", color: .red, isHidden: true, action: #selector(removeAllAnchors))
         button.configuration?.title = "All"
         return button
     }()
-    lazy var buttonDown: MoveBoxButton = {
-        let button = MoveBoxButton(systemName: "chevron.down", action: #selector(tapMoveBox))
+    lazy var buttonDown: MoveButton = {
+        let button = MoveButton(systemName: "chevron.down", action: #selector(tapMoveBox))
         return button
     }()
-    lazy var buttonUp: MoveBoxButton = {
-        let button = MoveBoxButton(systemName: "chevron.up", action: #selector(tapMoveBox))
+    lazy var buttonUp: MoveButton = {
+        let button = MoveButton(systemName: "chevron.up", action: #selector(tapMoveBox))
         return button
     }()
-    lazy var buttonLeft: MoveBoxButton = {
-        let button = MoveBoxButton(systemName: "chevron.left", action: #selector(tapMoveBox))
+    lazy var buttonLeft: MoveButton = {
+        let button = MoveButton(systemName: "chevron.left", action: #selector(tapMoveBox))
         return button
     }()
-    lazy var buttonRight: MoveBoxButton = {
-        let button = MoveBoxButton(systemName: "chevron.right", action: #selector(tapMoveBox))
+    lazy var buttonRight: MoveButton = {
+        let button = MoveButton(systemName: "chevron.right", action: #selector(tapMoveBox))
         return button
     }()
-    lazy var buttonZBegging: MoveBoxButton = {
-        let button = MoveBoxButton(systemName: "chevron.compact.up", action: #selector(tapMoveBox))
+    lazy var buttonZBegging: MoveButton = {
+        let button = MoveButton(systemName: "chevron.compact.up", action: #selector(tapMoveBox))
         return button
     }()
-    lazy var buttonZOnMe: MoveBoxButton = {
-        let button = MoveBoxButton(systemName: "chevron.compact.down", action: #selector(tapMoveBox))
+    lazy var buttonZOnMe: MoveButton = {
+        let button = MoveButton(systemName: "chevron.compact.down", action: #selector(tapMoveBox))
         return button
     }()
 
@@ -64,15 +64,14 @@ class ARViewController: UIViewController {
         arView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(arView)
         
-//        // MARK: debugOptions
-//        arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
+        // MARK: debugOptions
+        arView.debugOptions = [ARView.DebugOptions.showFeaturePoints]
         
         addSubviewForARView()
         setupConstraints()
-        setupControlBox()
-        
+
         enableLongPressGestureRecognizer()
-        arView.enableTapGestureRecognizer()
+        enableTapGestureRecognizer()
     }
     
   
@@ -83,6 +82,15 @@ class ARViewController: UIViewController {
     }
     
     
+    // MARK: - Methods
+    private func addSubviewForARView() {
+        let subviews = [removeAllBoxes, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging]
+        subviews.forEach { subview in
+            subview.translatesAutoresizingMaskIntoConstraints = false
+            arView.addSubview(subview)
+        }
+    }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             arView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -92,25 +100,7 @@ class ARViewController: UIViewController {
             
             removeAllBoxes.trailingAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             removeAllBoxes.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-        ])
-    }
-    
-    private func addSubviewForARView() {
-        let subviews = [removeAllBoxes]
-        subviews.forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-            arView.addSubview(subview)
-        }
-    }
-    
-    private func setupControlBox() {
-        let subviews = [buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging]
-        subviews.forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-            arView.addSubview(subview)
-        }
-        
-        NSLayoutConstraint.activate([
+            
             buttonDown.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             buttonDown.centerXAnchor.constraint(equalTo: arView.centerXAnchor),
             
@@ -130,7 +120,8 @@ class ARViewController: UIViewController {
             buttonRight.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -80)
         ])
     }
-        
+    
+    
     @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
         isHiddenButtonMoveBox(isHidden: true)
@@ -157,6 +148,7 @@ class ARViewController: UIViewController {
         }
     }
     
+    
     func placeObject(entityName: String, anchor: ARAnchor) {
         let box = MeshResource.generateBox(size: boxSize)
         let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
@@ -175,23 +167,7 @@ class ARViewController: UIViewController {
         
     }
     
-    
-    private func enableLongPressGestureRecognizer() {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture))
-        arView.addGestureRecognizer(longPressGestureRecognizer)
-    }
-    @objc private func longPressGesture(_ recognizer: UILongPressGestureRecognizer) {
-        let tapLocation = recognizer.location(in: arView)
-
-        if let entity = arView.entity(at: tapLocation) {
-            if let anchorEntity = entity.anchor, anchorEntity.name == .constants.nameAnchorBox {
-                anchorEntity.removeFromParent()
-                isHiddenButtonMoveBox(isHidden: true)
-            }
-        }
-    }
-    
-    private func isHiddenButtonMoveBox(isHidden: Bool) {
+    func isHiddenButtonMoveBox(isHidden: Bool) {
         if arView.scene.anchors.isEmpty {
             [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, removeAllBoxes].forEach { button in
                 button.isHidden = isHidden

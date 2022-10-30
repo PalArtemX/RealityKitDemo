@@ -9,7 +9,7 @@ import ARKit
 import RealityKit
 import Combine
 
-extension ARViewController: ARSessionDelegate {
+extension MainARViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {

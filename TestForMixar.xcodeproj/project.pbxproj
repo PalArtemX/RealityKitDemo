@@ -10,19 +10,20 @@
 		F8417C65290A7A5200415558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C64290A7A5200415558 /* AppDelegate.swift */; };
 		F8417C67290A7A5200415558 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C66290A7A5200415558 /* MainView.swift */; };
 		F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C6D290A7A5300415558 /* Preview Assets.xcassets */; };
-		F8417C77290A7D7100415558 /* ARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C76290A7D7100415558 /* ARViewControllerContainer.swift */; };
-		F8417C79290A813200415558 /* MyARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C78290A813200415558 /* MyARView.swift */; };
-		F8417C7B290A83B600415558 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C7A290A83B600415558 /* ARViewController.swift */; };
-		F8417C81290A899C00415558 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C80290A899C00415558 /* UIColorExtension.swift */; };
-		F8417C83290AD0E100415558 /* ARViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C82290AD0E100415558 /* ARViewExtension.swift */; };
-		F8417C88290C086B00415558 /* ARViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C87290C086B00415558 /* ARViewControllerExtension.swift */; };
+		F8417C77290A7D7100415558 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C76290A7D7100415558 /* ARViewContainer.swift */; };
+		F8417C79290A813200415558 /* MainARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C78290A813200415558 /* MainARView.swift */; };
+		F8417C7B290A83B600415558 /* MainARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C7A290A83B600415558 /* MainARViewController.swift */; };
+		F8417C81290A899C00415558 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C80290A899C00415558 /* UIColor+Extension.swift */; };
+		F8417C83290AD0E100415558 /* ARView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C82290AD0E100415558 /* ARView+Extension.swift */; };
+		F8417C88290C086B00415558 /* MainVCARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C87290C086B00415558 /* MainVCARSessionDelegate.swift */; };
 		F8417C91290C0A8B00415558 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C90290C0A8B00415558 /* Constans.swift */; };
 		F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C94290C0EBA00415558 /* Assets.xcassets */; };
-		F84DA8C3290D535300910269 /* MoveBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84DA8C2290D535300910269 /* MoveBoxButton.swift */; };
+		F84DA8C3290D535300910269 /* MoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84DA8C2290D535300910269 /* MoveButton.swift */; };
 		F84DA8C5290D8BF800910269 /* coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F84DA8C4290D84D300910269 /* coin.usdz */; };
 		F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E4290DA92A0043CED7 /* crystal.usdz */; };
 		F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E5290DA92A0043CED7 /* crystal2.usdz */; };
 		F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E6290DA92A0043CED7 /* crystal3.usdz */; };
+		F85085ED290E80B60043CED7 /* MainVCPressGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85085EC290E80B60043CED7 /* MainVCPressGesture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,19 +31,20 @@
 		F8417C64290A7A5200415558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8417C66290A7A5200415558 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F8417C6D290A7A5300415558 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F8417C76290A7D7100415558 /* ARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerContainer.swift; sourceTree = "<group>"; };
-		F8417C78290A813200415558 /* MyARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyARView.swift; sourceTree = "<group>"; };
-		F8417C7A290A83B600415558 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
-		F8417C80290A899C00415558 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		F8417C82290AD0E100415558 /* ARViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewExtension.swift; sourceTree = "<group>"; };
-		F8417C87290C086B00415558 /* ARViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerExtension.swift; sourceTree = "<group>"; };
+		F8417C76290A7D7100415558 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		F8417C78290A813200415558 /* MainARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARView.swift; sourceTree = "<group>"; };
+		F8417C7A290A83B600415558 /* MainARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARViewController.swift; sourceTree = "<group>"; };
+		F8417C80290A899C00415558 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		F8417C82290AD0E100415558 /* ARView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARView+Extension.swift"; sourceTree = "<group>"; };
+		F8417C87290C086B00415558 /* MainVCARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCARSessionDelegate.swift; sourceTree = "<group>"; };
 		F8417C90290C0A8B00415558 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		F8417C94290C0EBA00415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F84DA8C2290D535300910269 /* MoveBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveBoxButton.swift; sourceTree = "<group>"; };
+		F84DA8C2290D535300910269 /* MoveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveButton.swift; sourceTree = "<group>"; };
 		F84DA8C4290D84D300910269 /* coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin.usdz; sourceTree = "<group>"; };
 		F85085E4290DA92A0043CED7 /* crystal.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal.usdz; sourceTree = "<group>"; };
 		F85085E5290DA92A0043CED7 /* crystal2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal2.usdz; sourceTree = "<group>"; };
 		F85085E6290DA92A0043CED7 /* crystal3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal3.usdz; sourceTree = "<group>"; };
+		F85085EC290E80B60043CED7 /* MainVCPressGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCPressGesture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,10 @@
 		F8417C7C290A886300415558 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F8417C80290A899C00415558 /* UIColorExtension.swift */,
-				F8417C82290AD0E100415558 /* ARViewExtension.swift */,
-				F8417C87290C086B00415558 /* ARViewControllerExtension.swift */,
+				F8417C80290A899C00415558 /* UIColor+Extension.swift */,
+				F8417C82290AD0E100415558 /* ARView+Extension.swift */,
+				F8417C87290C086B00415558 /* MainVCARSessionDelegate.swift */,
+				F85085EC290E80B60043CED7 /* MainVCPressGesture.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -115,9 +118,9 @@
 		F8417C7E290A88F300415558 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F8417C78290A813200415558 /* MyARView.swift */,
 				F8417C66290A7A5200415558 /* MainView.swift */,
-				F84DA8C2290D535300910269 /* MoveBoxButton.swift */,
+				F8417C78290A813200415558 /* MainARView.swift */,
+				F84DA8C2290D535300910269 /* MoveButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,8 +128,8 @@
 		F8417C7F290A892200415558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F8417C76290A7D7100415558 /* ARViewControllerContainer.swift */,
-				F8417C7A290A83B600415558 /* ARViewController.swift */,
+				F8417C76290A7D7100415558 /* ARViewContainer.swift */,
+				F8417C7A290A83B600415558 /* MainARViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -135,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				F8417C94290C0EBA00415558 /* Assets.xcassets */,
-				F85085E3290DA8600043CED7 /* Models */,
+				F85085E3290DA8600043CED7 /* ARModels */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -148,7 +151,7 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		F85085E3290DA8600043CED7 /* Models */ = {
+		F85085E3290DA8600043CED7 /* ARModels */ = {
 			isa = PBXGroup;
 			children = (
 				F85085E4290DA92A0043CED7 /* crystal.usdz */,
@@ -156,7 +159,7 @@
 				F85085E6290DA92A0043CED7 /* crystal3.usdz */,
 				F84DA8C4290D84D300910269 /* coin.usdz */,
 			);
-			path = Models;
+			path = ARModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,16 +236,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F85085ED290E80B60043CED7 /* MainVCPressGesture.swift in Sources */,
 				F8417C67290A7A5200415558 /* MainView.swift in Sources */,
-				F8417C88290C086B00415558 /* ARViewControllerExtension.swift in Sources */,
+				F8417C88290C086B00415558 /* MainVCARSessionDelegate.swift in Sources */,
 				F8417C91290C0A8B00415558 /* Constans.swift in Sources */,
-				F8417C83290AD0E100415558 /* ARViewExtension.swift in Sources */,
-				F8417C77290A7D7100415558 /* ARViewControllerContainer.swift in Sources */,
-				F8417C79290A813200415558 /* MyARView.swift in Sources */,
-				F8417C7B290A83B600415558 /* ARViewController.swift in Sources */,
+				F8417C83290AD0E100415558 /* ARView+Extension.swift in Sources */,
+				F8417C77290A7D7100415558 /* ARViewContainer.swift in Sources */,
+				F8417C79290A813200415558 /* MainARView.swift in Sources */,
+				F8417C7B290A83B600415558 /* MainARViewController.swift in Sources */,
 				F8417C65290A7A5200415558 /* AppDelegate.swift in Sources */,
-				F84DA8C3290D535300910269 /* MoveBoxButton.swift in Sources */,
-				F8417C81290A899C00415558 /* UIColorExtension.swift in Sources */,
+				F84DA8C3290D535300910269 /* MoveButton.swift in Sources */,
+				F8417C81290A899C00415558 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

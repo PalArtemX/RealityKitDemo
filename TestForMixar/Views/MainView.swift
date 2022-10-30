@@ -11,7 +11,7 @@ import RealityKit
 struct MainView: View {
     
     var body: some View {
-        ARViewControllerContainer()
+        ARViewContainer()
             .edgesIgnoringSafeArea(.all)
     }
 }
