@@ -13,19 +13,25 @@ import Combine
 
 class MainARViewController: UIViewController {
 
-    var newReferenceImages:Set<ARReferenceImage> = Set<ARReferenceImage>()
+    //var newReferenceImages:Set<ARReferenceImage> = Set<ARReferenceImage>()
     var arView: ARView!
     private let speedMoveBox: Float = 0.03
     var doubleSpeedMoveBox = false
     private var boxSize: Float = 0.04
     var cancellable: Set<AnyCancellable> = []
     
-//    lazy var labelImageRecognized: UILabel = {
-//        let label = UILabel()
-//        label.isHidden = true
-//        label.text = "Image recognized"
-//        return
-//    }()
+    let labelImageRecognized: UIImageView = {
+        var config = UIImage.SymbolConfiguration(hierarchicalColor: .white)
+        
+        
+        let image = UIImage(systemName: "photo.artframe", withConfiguration: config)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.isHidden = true
+        return imageView
+    }()
+    
+    
     
     lazy var buttonRemoveAll: MoveButton = {
         let button = MoveButton(systemName: "trash.square", color: .red, isHidden: true, action: #selector(removeAllAnchors))
@@ -105,11 +111,12 @@ class MainARViewController: UIViewController {
     }
     
     private func addSubviewForARView() {
-        let subviews = [buttonRemoveAll, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging, buttonPlaceCoins]
+        let subviews = [buttonRemoveAll, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging, buttonPlaceCoins, labelImageRecognized]
         subviews.forEach { subview in
             subview.translatesAutoresizingMaskIntoConstraints = false
             arView.addSubview(subview)
         }
+        
     }
     
     private func setupConstraints() {
@@ -141,7 +148,11 @@ class MainARViewController: UIViewController {
             buttonRight.bottomAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.bottomAnchor, constant: -80),
             
             buttonPlaceCoins.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
-            buttonPlaceCoins.trailingAnchor.constraint(equalTo: arView.trailingAnchor, constant: -10)
+            buttonPlaceCoins.trailingAnchor.constraint(equalTo: arView.trailingAnchor, constant: -10),
+            
+            labelImageRecognized.leadingAnchor.constraint(equalTo: arView.leadingAnchor, constant: 10),
+            labelImageRecognized.topAnchor.constraint(equalTo: arView.safeAreaLayoutGuide.topAnchor, constant: 10),
+            labelImageRecognized.widthAnchor.constraint(equalToConstant: 44)
         ])
     }
     
@@ -149,6 +160,8 @@ class MainARViewController: UIViewController {
     @objc private func removeAllAnchors() {
         arView.scene.anchors.removeAll()
         isHiddenButtonMove()
+        labelImageRecognized.isHidden = true
+        doubleSpeedMoveBox = false
     }
     
     @objc func tapMoveBox(_ sender: UIButton) {
@@ -220,9 +233,9 @@ class MainARViewController: UIViewController {
         
         let anchorEntity = AnchorEntity(plane: .horizontal)
 
-        //anchorEntity.position.y += 0.1
+        anchorEntity.position.y += 0.1
         
-        let modelEntity = try! ModelEntity.loadModel(named: "Stylized_Coin")
+        let modelEntity = try! ModelEntity.loadModel(named: .constants.nameModelCoin1)
 
 
         anchorEntity.addChild(modelEntity)
