@@ -12,14 +12,15 @@ import ARKit
 import Combine
 
 class MainARViewController: UIViewController {
-
+    
     // MARK: - Properties
-    //var newReferenceImages:Set<ARReferenceImage> = Set<ARReferenceImage>()
     var arView: ARView!
     private let speedMoveBox: Float = 0.03
+    private let boxSize: Float = 0.04
     var doubleSpeedMoveBox = false
-    private var boxSize: Float = 0.04
     var cancellable: Set<AnyCancellable> = []
+    var dynamicReferenceImages: Set<ARReferenceImage> = []
+    let urlReferenceImages = "https://mix-ar.ru/content/ios/marker.jpg"
     
     lazy var imageRecognized: UIImageView = {
         var config = UIImage.SymbolConfiguration(hierarchicalColor: .white)
@@ -92,25 +93,26 @@ class MainARViewController: UIViewController {
         setupConstraints()
         enableLongPressGestureRecognizer()
         enableTapGestureRecognizer()
+        addReferenceImagesDynamicLoad()
     }
 
     
     // MARK: - Methods
-    private func setupConfiguration() {
-        guard let referenceImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-            return
-        }
-        let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
-       
-        arView.automaticallyConfigureSession = false
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
-        configuration.environmentTexturing = .automatic
-        configuration.detectionImages = referenceImage
-        configuration.maximumNumberOfTrackedImages = 1
-        
-        arView.session.run(configuration, options: ARSession.RunOptions(options))
-    }
+    func setupConfiguration() {
+//        guard let referenceImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+//            return
+//        }
+    let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
+    
+    arView.automaticallyConfigureSession = false
+    let configuration = ARWorldTrackingConfiguration()
+    configuration.planeDetection = [.horizontal, .vertical]
+    configuration.environmentTexturing = .automatic
+    configuration.detectionImages = dynamicReferenceImages
+    configuration.maximumNumberOfTrackedImages = 1
+    
+    arView.session.run(configuration, options: ARSession.RunOptions(options))
+}
     
     private func addSubviewForARView() {
         let subviews = [buttonRemoveAll, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging, buttonPlaceCoins, imageRecognized, labelScore]
@@ -192,22 +194,22 @@ class MainARViewController: UIViewController {
     }
     
     func placeBox(entityName: String, anchor: ARAnchor) {
-    let box = MeshResource.generateBox(size: boxSize)
-    let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
-    let modelEntity = ModelEntity(mesh: box, materials: [material])
-    let anchorEntity = AnchorEntity(anchor: anchor)
+        let box = MeshResource.generateBox(size: boxSize)
+        let material = SimpleMaterial(color: .randomColor(), isMetallic: true)
+        let modelEntity = ModelEntity(mesh: box, materials: [material])
+        let anchorEntity = AnchorEntity(anchor: anchor)
         
-    modelEntity.generateCollisionShapes(recursive: true)
-    arView.installGestures(.all, for: modelEntity)
-    anchorEntity.name = entityName
-    
-    anchorEntity.addChild(modelEntity)
-    arView.scene.addAnchor(anchorEntity)
-    
-    [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, buttonRemoveAll, buttonPlaceCoins, buttonPlaceCoins].forEach { button in
-        button.isHidden = false
+        modelEntity.generateCollisionShapes(recursive: true)
+        arView.installGestures(.all, for: modelEntity)
+        anchorEntity.name = entityName
+        
+        anchorEntity.addChild(modelEntity)
+        arView.scene.addAnchor(anchorEntity)
+        
+        [buttonUp, buttonDown, buttonLeft, buttonRight, buttonZBegging, buttonZOnMe, buttonRemoveAll, buttonPlaceCoins, buttonPlaceCoins].forEach { button in
+            button.isHidden = false
+        }
     }
-}
     
     func isHiddenButtonMove() {
         var countBoxAnchors = 0
@@ -229,7 +231,7 @@ class MainARViewController: UIViewController {
             }
         }
     }
-
+    
     @objc private func placeCoinsCoins() {
         for _ in 0...10 {
             let anchorEntity = AnchorEntity(plane: .horizontal)
@@ -252,4 +254,6 @@ class MainARViewController: UIViewController {
         buttonPlaceCoins.isHidden = true
     }
     
+
 }
+
