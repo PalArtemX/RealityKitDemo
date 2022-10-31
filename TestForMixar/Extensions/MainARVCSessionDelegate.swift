@@ -36,8 +36,8 @@ extension MainARViewController: ARSessionDelegate {
                 case .failure(let error):
                     print("⚠️ Error: \(error.localizedDescription)")
                 }
-            } receiveValue: { [weak self] object in
-                anchorEntity.addChild(object)
+            } receiveValue: { [weak self] modelEntity in
+                anchorEntity.addChild(modelEntity)
                 self?.arView.scene.anchors.append(anchorEntity)
             }
             .store(in: &cancellable)

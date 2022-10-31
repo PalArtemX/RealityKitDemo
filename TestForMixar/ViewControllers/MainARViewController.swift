@@ -237,11 +237,16 @@ class MainARViewController: UIViewController {
             anchorEntity.position.x += .randomAnchorPosition()
             anchorEntity.position.z += .randomAnchorPosition()
             
-            let modelEntity = try! ModelEntity.loadModel(named: .constants.nameModelCoin1)
-            anchorEntity.addChild(modelEntity)
-            arView.scene.addAnchor(anchorEntity)
+            let _ = ModelEntity.loadModelAsync(named: .constants.nameModelCoin1)
+                .receive(on: DispatchQueue.main)
+                .sink { _ in
+                    
+                } receiveValue: { [weak self] modelEntity in
+                    anchorEntity.addChild(modelEntity)
+                    self?.arView.scene.anchors.append(anchorEntity)
+                }
+                .store(in: &cancellable)
         }
-        
         buttonRemoveAll.isHidden = false
         labelScore.isHidden = false
         buttonPlaceCoins.isHidden = true
