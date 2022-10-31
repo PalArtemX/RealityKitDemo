@@ -25,6 +25,7 @@
 		F85085ED290E80B60043CED7 /* MainARVCPressGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */; };
 		F88B7912290F246B00E33998 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7911290F246B00E33998 /* Float+Extension.swift */; };
 		F88B7916290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7915290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift */; };
+		F88B7919291006CB00E33998 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7918291006CB00E33998 /* NetworkingManager.swift */; };
 		F8E792D3290EE71200847727 /* coin1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792D2290EE71200847727 /* coin1.usdz */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCPressGesture.swift; sourceTree = "<group>"; };
 		F88B7911290F246B00E33998 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		F88B7915290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCReferenceImagesDynamicLoading.swift; sourceTree = "<group>"; };
+		F88B7918291006CB00E33998 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		F8E792D2290EE71200847727 /* coin1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin1.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 				F8417C7C290A886300415558 /* Extensions */,
 				F8417C84290BE6FC00415558 /* Resource */,
 				F8417C8F290C0A2800415558 /* Helpers */,
+				F88B79172910060600E33998 /* Managers */,
 				F8417C6C290A7A5300415558 /* Preview Content */,
 			);
 			path = TestForMixar;
@@ -166,6 +169,14 @@
 				F8E792D2290EE71200847727 /* coin1.usdz */,
 			);
 			path = ARModels;
+			sourceTree = "<group>";
+		};
+		F88B79172910060600E33998 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F88B7918291006CB00E33998 /* NetworkingManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 				F84DA8C3290D535300910269 /* MoveButton.swift in Sources */,
 				F88B7912290F246B00E33998 /* Float+Extension.swift in Sources */,
 				F8417C81290A899C00415558 /* UIColor+Extension.swift in Sources */,
+				F88B7919291006CB00E33998 /* NetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
