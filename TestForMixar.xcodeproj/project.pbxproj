@@ -26,6 +26,8 @@
 		F88B7912290F246B00E33998 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7911290F246B00E33998 /* Float+Extension.swift */; };
 		F88B7916290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7915290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift */; };
 		F88B7919291006CB00E33998 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7918291006CB00E33998 /* NetworkingManager.swift */; };
+		F88B791B2910114B00E33998 /* monet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F88B791A2910114B00E33998 /* monet.mp3 */; };
+		F88B791D2910412500E33998 /* AVAudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B791C2910412500E33998 /* AVAudioPlayerManager.swift */; };
 		F8E792D3290EE71200847727 /* coin1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F8E792D2290EE71200847727 /* coin1.usdz */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		F88B7911290F246B00E33998 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		F88B7915290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCReferenceImagesDynamicLoading.swift; sourceTree = "<group>"; };
 		F88B7918291006CB00E33998 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		F88B791A2910114B00E33998 /* monet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monet.mp3; sourceTree = "<group>"; };
+		F88B791C2910412500E33998 /* AVAudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioPlayerManager.swift; sourceTree = "<group>"; };
 		F8E792D2290EE71200847727 /* coin1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin1.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,8 +150,9 @@
 		F8417C84290BE6FC00415558 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F8417C94290C0EBA00415558 /* Assets.xcassets */,
 				F85085E3290DA8600043CED7 /* ARModels */,
+				F8417C94290C0EBA00415558 /* Assets.xcassets */,
+				F88B791A2910114B00E33998 /* monet.mp3 */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				F88B7918291006CB00E33998 /* NetworkingManager.swift */,
+				F88B791C2910412500E33998 /* AVAudioPlayerManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 				F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */,
 				F8E792D3290EE71200847727 /* coin1.usdz in Resources */,
 				F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */,
+				F88B791B2910114B00E33998 /* monet.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +271,7 @@
 				F8417C7B290A83B600415558 /* MainARViewController.swift in Sources */,
 				F8417C65290A7A5200415558 /* AppDelegate.swift in Sources */,
 				F84DA8C3290D535300910269 /* MoveButton.swift in Sources */,
+				F88B791D2910412500E33998 /* AVAudioPlayerManager.swift in Sources */,
 				F88B7912290F246B00E33998 /* Float+Extension.swift in Sources */,
 				F8417C81290A899C00415558 /* UIColor+Extension.swift in Sources */,
 				F88B7919291006CB00E33998 /* NetworkingManager.swift in Sources */,

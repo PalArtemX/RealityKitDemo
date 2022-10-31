@@ -21,6 +21,8 @@ class MainARViewController: UIViewController {
     var cancellable: Set<AnyCancellable> = []
     var dynamicReferenceImages: Set<ARReferenceImage> = []
     let urlReferenceImages = "https://mix-ar.ru/content/ios/marker.jpg"
+    var collisionSubscribing: Cancellable?
+    private var score = 0
     
     lazy var imageRecognized: UIImageView = {
         var config = UIImage.SymbolConfiguration(hierarchicalColor: .white)
@@ -94,6 +96,7 @@ class MainARViewController: UIViewController {
         enableLongPressGestureRecognizer()
         enableTapGestureRecognizer()
         addReferenceImagesDynamicLoad()
+        setupCollision()
     }
 
     
@@ -168,6 +171,8 @@ class MainARViewController: UIViewController {
         imageRecognized.isHidden = true
         doubleSpeedMoveBox = false
         labelScore.isHidden = true
+        score = 0
+        labelScore.text = "0"
     }
     
     @objc private func tapMoveBox(_ sender: UIButton) {
@@ -235,7 +240,7 @@ class MainARViewController: UIViewController {
     @objc private func placeCoinsCoins() {
         for _ in 0...10 {
             let anchorEntity = AnchorEntity(plane: .horizontal)
-            anchorEntity.position.y += .randomAnchorPosition() + 0.2
+            anchorEntity.position.y += .randomAnchorPosition() + 0.25
             anchorEntity.position.x += .randomAnchorPosition()
             anchorEntity.position.z += .randomAnchorPosition()
             
@@ -244,6 +249,8 @@ class MainARViewController: UIViewController {
                 .sink { _ in
                     
                 } receiveValue: { [weak self] modelEntity in
+                    modelEntity.generateCollisionShapes(recursive: true)
+                    modelEntity.name = .constants.nameModelCoin1
                     anchorEntity.addChild(modelEntity)
                     self?.arView.scene.anchors.append(anchorEntity)
                 }
@@ -252,6 +259,27 @@ class MainARViewController: UIViewController {
         buttonRemoveAll.isHidden = false
         labelScore.isHidden = false
         buttonPlaceCoins.isHidden = true
+    }
+    
+    
+    
+    
+    
+    func setupCollision() {
+        collisionSubscribing = arView.scene.subscribe(to: CollisionEvents.Began.self) { event in
+            AVAudioPlayerManager.shared.playSound(nameFileMP3: .constants.nameMP3monet)
+
+            if let entityB = event.entityB as? ModelEntity, entityB.name == .constants.nameModelCoin1 {
+                entityB.removeFromParent()
+                self.score += 1
+                self.labelScore.text = "\(self.score)"
+            }
+            
+        }
+        
+        
+        
+        
     }
     
 

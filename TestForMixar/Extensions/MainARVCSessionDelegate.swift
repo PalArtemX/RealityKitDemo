@@ -13,7 +13,7 @@ extension MainARViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {
-            print("⚓️ Anchor: \(String(describing: anchor.name?.description))")
+            print("DEBUG: ⚓️ Anchor: \(String(describing: anchor.name?.description))")
             if let anchorName = anchor.name, anchorName == .constants.nameAnchorBox {
                 placeBox(entityName: anchorName, anchor: anchor)
             }
@@ -32,9 +32,9 @@ extension MainARViewController: ARSessionDelegate {
             .sink { completion in
                 switch completion {
                 case .finished:
-                    print("🌉 Image recognized")
+                    print("DEBUG: 🌉 Image recognized finich")
                 case .failure(let error):
-                    print("⚠️ Error: \(error.localizedDescription)")
+                    print("DEBUG: ⚠️ Error: \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] modelEntity in
                 anchorEntity.addChild(modelEntity)

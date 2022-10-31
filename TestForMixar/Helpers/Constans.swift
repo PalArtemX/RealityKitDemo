@@ -15,6 +15,7 @@ struct Constants {
     let nameModelCrystal2 = "crystal2"
     let nameModelCrystal3 = "crystal3"
     let nameImageMarker = "marker"
+    let nameMP3monet = "monet"
 }
 
 extension String {
