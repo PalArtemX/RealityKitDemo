@@ -13,9 +13,9 @@ struct Constants {
     let nameModelCoin1 = "coin1"
     let nameModelCrystal = "crystal"
     let nameModelCrystal2 = "crystal2"
-    let nameModelCrystal3 = "crystal3"
     let nameImageMarker = "marker"
     let nameMP3monet = "monet"
+    let urlReferenceImages = "https://mix-ar.ru/content/ios/marker.jpg"
 }
 
 extension String {

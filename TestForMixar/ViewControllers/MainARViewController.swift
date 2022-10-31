@@ -20,7 +20,6 @@ class MainARViewController: UIViewController {
     var doubleSpeedMoveBox = false
     var cancellable: Set<AnyCancellable> = []
     var dynamicReferenceImages: Set<ARReferenceImage> = []
-    let urlReferenceImages = "https://mix-ar.ru/content/ios/marker.jpg"
     var collisionSubscribing: Cancellable?
     private var score = 0
     
@@ -70,7 +69,7 @@ class MainARViewController: UIViewController {
         return button
     }()
     lazy var buttonPlaceCoins: MoveButton = {
-        let button = MoveButton(systemName: "circle.hexagonpath.fill", color: .green, isHidden: true, action: #selector(placeCoinsCoins))
+        let button = MoveButton(systemName: "circle.hexagonpath.fill", color: .green, isHidden: true, action: #selector(placeCoins))
         button.configuration?.title = "Coins"
         return button
     }()
@@ -102,20 +101,18 @@ class MainARViewController: UIViewController {
     
     // MARK: - Methods
     func setupConfiguration() {
-//        guard let referenceImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-//            return
-//        }
-    let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
-    
-    arView.automaticallyConfigureSession = false
-    let configuration = ARWorldTrackingConfiguration()
-    configuration.planeDetection = [.horizontal, .vertical]
-    configuration.environmentTexturing = .automatic
-    configuration.detectionImages = dynamicReferenceImages
-    configuration.maximumNumberOfTrackedImages = 1
-    
-    arView.session.run(configuration, options: ARSession.RunOptions(options))
-}
+        //guard let referenceImage = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
+        let options = [ARSession.RunOptions.removeExistingAnchors, ARSession.RunOptions.resetTracking]
+        
+        arView.automaticallyConfigureSession = false
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        configuration.environmentTexturing = .automatic
+        configuration.detectionImages = dynamicReferenceImages
+        configuration.maximumNumberOfTrackedImages = 1
+        
+        arView.session.run(configuration, options: ARSession.RunOptions(options))
+    }
     
     private func addSubviewForARView() {
         let subviews = [buttonRemoveAll, buttonDown, buttonUp, buttonLeft, buttonRight, buttonZOnMe, buttonZBegging, buttonPlaceCoins, imageRecognized, labelScore]
@@ -237,7 +234,7 @@ class MainARViewController: UIViewController {
         }
     }
     
-    @objc private func placeCoinsCoins() {
+    @objc private func placeCoins() {
         for _ in 0...10 {
             let anchorEntity = AnchorEntity(plane: .horizontal)
             anchorEntity.position.y += .randomAnchorPosition() + 0.25
@@ -261,27 +258,16 @@ class MainARViewController: UIViewController {
         buttonPlaceCoins.isHidden = true
     }
     
-    
-    
-    
-    
     func setupCollision() {
         collisionSubscribing = arView.scene.subscribe(to: CollisionEvents.Began.self) { event in
-            AVAudioPlayerManager.shared.playSound(nameFileMP3: .constants.nameMP3monet)
-
             if let entityB = event.entityB as? ModelEntity, entityB.name == .constants.nameModelCoin1 {
                 entityB.removeFromParent()
+                AVAudioPlayerManager.shared.playSound(nameFileMP3: .constants.nameMP3monet)
                 self.score += 1
                 self.labelScore.text = "\(self.score)"
             }
-            
         }
-        
-        
-        
-        
     }
     
-
 }
 

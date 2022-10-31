@@ -13,7 +13,7 @@ import ARKit
 extension MainARViewController {
     
     func addReferenceImagesDynamicLoad() {
-        if let url = URL(string: urlReferenceImages) {
+        if let url = URL(string: .constants.urlReferenceImages) {
             let networkingManager = NetworkingManager()
             networkingManager.loadImage(url: url) { result in
                 let arReferenceImage = ARReferenceImage(result.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: 4)

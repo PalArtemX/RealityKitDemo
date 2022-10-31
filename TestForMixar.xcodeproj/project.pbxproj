@@ -14,14 +14,12 @@
 		F8417C79290A813200415558 /* MainARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C78290A813200415558 /* MainARView.swift */; };
 		F8417C7B290A83B600415558 /* MainARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C7A290A83B600415558 /* MainARViewController.swift */; };
 		F8417C81290A899C00415558 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C80290A899C00415558 /* UIColor+Extension.swift */; };
-		F8417C83290AD0E100415558 /* ARView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C82290AD0E100415558 /* ARView+Extension.swift */; };
 		F8417C88290C086B00415558 /* MainARVCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C87290C086B00415558 /* MainARVCSessionDelegate.swift */; };
 		F8417C91290C0A8B00415558 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8417C90290C0A8B00415558 /* Constans.swift */; };
 		F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8417C94290C0EBA00415558 /* Assets.xcassets */; };
 		F84DA8C3290D535300910269 /* MoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84DA8C2290D535300910269 /* MoveButton.swift */; };
 		F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E4290DA92A0043CED7 /* crystal.usdz */; };
 		F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E5290DA92A0043CED7 /* crystal2.usdz */; };
-		F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F85085E6290DA92A0043CED7 /* crystal3.usdz */; };
 		F85085ED290E80B60043CED7 /* MainARVCPressGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */; };
 		F88B7912290F246B00E33998 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7911290F246B00E33998 /* Float+Extension.swift */; };
 		F88B7916290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B7915290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift */; };
@@ -40,14 +38,12 @@
 		F8417C78290A813200415558 /* MainARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARView.swift; sourceTree = "<group>"; };
 		F8417C7A290A83B600415558 /* MainARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARViewController.swift; sourceTree = "<group>"; };
 		F8417C80290A899C00415558 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		F8417C82290AD0E100415558 /* ARView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARView+Extension.swift"; sourceTree = "<group>"; };
 		F8417C87290C086B00415558 /* MainARVCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCSessionDelegate.swift; sourceTree = "<group>"; };
 		F8417C90290C0A8B00415558 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		F8417C94290C0EBA00415558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F84DA8C2290D535300910269 /* MoveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveButton.swift; sourceTree = "<group>"; };
 		F85085E4290DA92A0043CED7 /* crystal.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal.usdz; sourceTree = "<group>"; };
 		F85085E5290DA92A0043CED7 /* crystal2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal2.usdz; sourceTree = "<group>"; };
-		F85085E6290DA92A0043CED7 /* crystal3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = crystal3.usdz; sourceTree = "<group>"; };
 		F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCPressGesture.swift; sourceTree = "<group>"; };
 		F88B7911290F246B00E33998 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		F88B7915290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARVCReferenceImagesDynamicLoading.swift; sourceTree = "<group>"; };
@@ -112,7 +108,6 @@
 			children = (
 				F8417C80290A899C00415558 /* UIColor+Extension.swift */,
 				F88B7911290F246B00E33998 /* Float+Extension.swift */,
-				F8417C82290AD0E100415558 /* ARView+Extension.swift */,
 				F8417C87290C086B00415558 /* MainARVCSessionDelegate.swift */,
 				F85085EC290E80B60043CED7 /* MainARVCPressGesture.swift */,
 				F88B7915290FF36100E33998 /* MainARVCReferenceImagesDynamicLoading.swift */,
@@ -170,7 +165,6 @@
 			children = (
 				F85085E4290DA92A0043CED7 /* crystal.usdz */,
 				F85085E5290DA92A0043CED7 /* crystal2.usdz */,
-				F85085E6290DA92A0043CED7 /* crystal3.usdz */,
 				F8E792D2290EE71200847727 /* coin1.usdz */,
 			);
 			path = ARModels;
@@ -246,7 +240,6 @@
 				F85085E8290DA92A0043CED7 /* crystal2.usdz in Resources */,
 				F8417C6E290A7A5300415558 /* Preview Assets.xcassets in Resources */,
 				F85085E7290DA92A0043CED7 /* crystal.usdz in Resources */,
-				F85085E9290DA92A0043CED7 /* crystal3.usdz in Resources */,
 				F8E792D3290EE71200847727 /* coin1.usdz in Resources */,
 				F8417C95290C0EBA00415558 /* Assets.xcassets in Resources */,
 				F88B791B2910114B00E33998 /* monet.mp3 in Resources */,
@@ -265,7 +258,6 @@
 				F8417C67290A7A5200415558 /* MainView.swift in Sources */,
 				F8417C88290C086B00415558 /* MainARVCSessionDelegate.swift in Sources */,
 				F8417C91290C0A8B00415558 /* Constans.swift in Sources */,
-				F8417C83290AD0E100415558 /* ARView+Extension.swift in Sources */,
 				F8417C77290A7D7100415558 /* ARViewContainer.swift in Sources */,
 				F8417C79290A813200415558 /* MainARView.swift in Sources */,
 				F8417C7B290A83B600415558 /* MainARViewController.swift in Sources */,
