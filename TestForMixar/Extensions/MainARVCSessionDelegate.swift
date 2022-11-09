@@ -32,7 +32,7 @@ extension MainARViewController: ARSessionDelegate {
             .sink { completion in
                 switch completion {
                 case .finished:
-                    print("DEBUG: 🌉 Image recognized finisch")
+                    print("DEBUG: 🌉 Image recognized finish")
                 case .failure(let error):
                     print("DEBUG: ⚠️ Error: \(error.localizedDescription)")
                 }
